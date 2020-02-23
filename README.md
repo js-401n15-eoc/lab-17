@@ -24,4 +24,4 @@
 
 #### UML
 
-![UML Image](lab-16-UML.png "uml diagram")
+![UML Image](lab-17-UML.png "uml diagram")
