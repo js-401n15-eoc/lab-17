@@ -1,0 +1,17 @@
+{
+  "name": "lab-17",
+  "version": "1.0.0",
+  "description": "Lab 17",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest --verbose --coverage"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "events": "^3.1.0",
+    "fs": "0.0.1-security",
+    "jest": "^24.8.0",
+    "util": "^0.12.1"
+  }
+}
