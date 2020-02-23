@@ -1,10 +1,6 @@
 'use strict';
 
-// const net = require('net');
-// const client = new net.Socket();
 const events = require('./events.js');
-
-// client.connect(3001, 'localhost', () => console.log('logger connected? yes'));
 
 events.on('save', payload => logger('save', payload));
 events.on('error', payload => errLogger('error', payload));
