@@ -11,7 +11,7 @@ const file = `${__dirname}/../files/chicken-scratch.txt`;
 
 client.connect(3001, 'localhost', () => console.log('api connected? yes'));
 
-app.get('/uppercase', getText);
+app.get('/get', getText);
 
 function getText(req, res) {
 

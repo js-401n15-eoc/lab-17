@@ -1,11 +1,11 @@
-const { logger, errLogger } = require('../logger.js');
+const { logger, errLogger } = require('../app/logger.js');
 const mockfs = require('../__mocks__/fs.js');
 const util = require('util');
 const mockRead = util.promisify(mockfs.readFile);
 const mockWrite = util.promisify(mockfs.writeFile);
 const testFile = `${__dirname}/files/test-scratch.txt`;
 const testString = 'The quick brown fox jumped over the lazy dogs.';
-const { upperCaseContents } = require('../alter-file.js');
+const { upperCaseContents } = require('../app/alter-file.js');
 
 describe('logger', () => {
   it('can display the event, time, and payload', () => {
