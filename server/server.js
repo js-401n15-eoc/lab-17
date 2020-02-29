@@ -5,24 +5,24 @@ const net = require('net');
 const port = process.env.port || 3001;
 
 const server = net.createServer();
-server.listen(port, () => console.log('Sever up on port', port));
 
 let socketPool = {};
-server.on('connection', (socket) => {
+server.on('connection', handleIncomingData(socket));
 
+function handleIncomingData(socket) {
   let id = `Droid id: ${Math.random()}`;
   socketPool[id] = socket;
 
   socket.on('data', (buffer) => {
     let rawData = buffer.toString();
     let jsonObj = JSON.parse(rawData);
-    console.log('jsonObj in socket.on data:', jsonObj);
+    console.log('broadcasting', jsonObj.event);
     broadcast(rawData);
   });
 
   socket.on('error', handleError);
   socket.on('end', () => disconnect(id));
-})
+};
 
 function handleError(err) {
   console.error('Error:', err);
@@ -38,3 +38,13 @@ function broadcast(message) {
     socketPool[socket].write(message);
   }
 }
+
+function start() {
+  server.listen(port, () => console.log('Server up on port', port));
+}
+
+if (!/server/.test(module.id)) {
+  start();
+}
+
+module.exports = { start, handleError, broadcast, disconnect, handleIncomingData };

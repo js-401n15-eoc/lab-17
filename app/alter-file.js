@@ -11,7 +11,8 @@ const upperCaseContents = (buffer) => {
 };
 
 const ok = (file) => {
-  events.emit('save', file);
+  let message = { event: 'save', payload: `${file} saved` };
+  events.emit(message.event, JSON.stringify(message));
 };
 
 const err = (error) => {

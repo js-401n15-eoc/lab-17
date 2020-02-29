@@ -14,14 +14,12 @@ describe('logger', () => {
     const res = logger('save', testFile);
 
     expect(console.log).toHaveBeenCalled();
-    expect(res.event).toBe('save');;
-    expect(res.payload).toBe(testFile);
-    expect(!!res.time).toBe(true);
+    expect(res).toBe('save');
   });
 
   it('can catch an error', () => {
     jest.spyOn(global.console, 'error');
-    const expectedRes = `error writing to file: ${testFile}`;
+    const expectedRes = `ERR: error`;
     const res = errLogger('error', testFile);
 
     expect(console.error).toHaveBeenCalled();
